@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AXKed91FvfsQgD2RovCv5m0bHPnSas5rpy9w4YiRrTcU3CTC82hg9FOTH5GbjQLmxoT80jtCszqtUvaSUxYf/Q==",
+  "dgSpecHash": "47lusH84wtk0ip37inFOFGF/r5qTaEwhWMf5+pDzxpAoUSDM5KmBbuQY95YXJ+MBf83RZ0bBsweNkRIrl4MKjw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MatheoPC\\source\\repos\\PQRS\\PQRS.Dto\\PQRS.Dto.csproj",
+  "projectFilePath": "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.Dto\\PQRS.Dto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MatheoPC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\MatheoPC\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

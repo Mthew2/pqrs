@@ -22,6 +22,23 @@ namespace PQRS.Dto
             set { idCliente = value; }
         }
 
+        private int servicio;
+
+        public int Servicio
+        {
+            get { return servicio; }
+            set { servicio = value; }
+        }
+
+        private int tipoSolicitud;
+
+        public int TipoSolicitud
+        {
+            get { return tipoSolicitud; }
+            set { tipoSolicitud = value; }
+        }
+
+
 
     }
 }

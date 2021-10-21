@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MatheoPC\\source\\repos\\PQRS\\PQRS.UI\\PQRS.UI.csproj": {}
+    "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.UI\\PQRS.UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MatheoPC\\source\\repos\\PQRS\\PQRS.UI\\PQRS.UI.csproj": {
+    "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.UI\\PQRS.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MatheoPC\\source\\repos\\PQRS\\PQRS.UI\\PQRS.UI.csproj",
+        "projectUniqueName": "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.UI\\PQRS.UI.csproj",
         "projectName": "PQRS.UI",
-        "projectPath": "C:\\Users\\MatheoPC\\source\\repos\\PQRS\\PQRS.UI\\PQRS.UI.csproj",
+        "projectPath": "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.UI\\PQRS.UI.csproj",
         "packagesPath": "C:\\Users\\MatheoPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MatheoPC\\source\\repos\\PQRS\\PQRS.UI\\obj\\",
+        "outputPath": "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
