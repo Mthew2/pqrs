@@ -14,5 +14,16 @@ namespace PQRS.Dto.dtos
             set { idPeticion = value; }
         }
 
+        private int idSupervisor;
+
+        public int IdSupervisor
+        {
+            get { return idSupervisor; }
+            set { idSupervisor = value; }
+        }
+
+        public bool Validar() {
+            return true;
+        }
     }
 }
