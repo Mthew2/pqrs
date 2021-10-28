@@ -19,6 +19,7 @@
             this.servicio = servicio;
             this.tipoSolicitud = tipoSolicitud;
             this.fecha = DateTime.Now;
+            this.error = string.Empty;
         }
 
         public AreaType Area
@@ -57,24 +58,13 @@
             protected set { error = value; }
         }
 
-        public virtual bool Registrar()
-        {
-            if (!this.Validar())
-            {
-                return false;
-            }
-            //Almacena en plugin de Excel
-            return true;
-        }
-
-        public bool Consultar() { 
-            //Consulta en libro de excelpor id Solicitud
-            return true; 
-        }
+        public abstract bool Registrar();
+        public abstract bool Consultar();
 
         public virtual bool Validar()
         {
-            StringBuilder sbError = new StringBuilder();
+            this.Error = string.Empty;
+            StringBuilder sbError = new StringBuilder("");
             if (this.area == 0)
             {
                 sbError.AppendLine("El campo Area es oblogatirio");
@@ -92,7 +82,7 @@
                 sbError.AppendLine("El campo Tipo de Solicitud es oblogatirio");
             }
             this.error = sbError.ToString();
-            return this.error.Length == 0;
+            return String.IsNullOrEmpty(this.error);
         }
     }
 }
