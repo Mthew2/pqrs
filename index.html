@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PQRS - Trimtek</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="css/styles.css">
+   <script type="text/javascript" src="script/scripts.js"></script>
+</head> 
+<body>
+  <h1 class="font-weight-normal"> Trim-Teck - PQRSF System </h1>
+
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+      <button class="btn btn-outline-success" type="button" onclick="window.location.href='index.html'">Inicio</button>
+      <button class="btn btn-outline-success" type="button" onclick="mostrarConsultar();">Conusltar</button>
+      <button class="btn btn-outline-success" type="button" onclick="mostrarGenerar();">Generar</button>
+    </form>
+  </nav>
+  <br>
+
+  <div id="image">
+    <img id="image-init" src="images/init.png" class="rounded mx-auto d-block">
+  </div>
+  
+
+  <div id="logreg-forms">
+    <form id="generar">
+      <img src="images/init.png" class="rounded mx-auto d-block">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Código del área a la que va dirigida la queja</label>
+        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="123">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Identificación</label>
+        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="123456">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Código del servicio</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option value="1">Telefonía</option>
+          <option value="2">Internet</option>
+          <option value="3">Televisión</option>
+          <option value="4">Agua</option>
+          <option value="5">Luz</option>
+          <option value="6">Alcantarillado</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Código de la solicitud</label>
+        <select onclick="mostrarTipoReclamo();" class="form-control" id="exampleFormControlSelect2" >
+          <option value="1">Petición</option>
+          <option value="2">Queja</option>
+          <option value="3">Reclamo</option>
+          <option value="4">Sugerencia</option>
+          <option value="5">Felicitación</option>
+        </select>
+      </div>
+      <div class="form-group" id="tipo-reclamo">
+        <label for="exampleFormControlSelect3">Tipo de reclamo</label>
+        <select class="form-control" id="subtipo-reclamo" >
+          <option value="1">Facturación</option>
+          <option value="2">Configuración</option>
+          <option value="3">Instalación</option>
+        </select>
+      </div>
+      <div class="form-group" id="detalle">
+        <label for="exampleFormControlTextarea1">Cuentanos más de tu buena experiencia</label>
+        <textarea class="form-control" id="area-detalle" maxlength="50"></textarea>
+      </div>
+      <button type="button" class="btn btn-success btn-lg btn-block">Guardar</button>
+    </form>
+
+    <form id="consultar">
+      <img src="images/init.png" class="rounded mx-auto d-block">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Código de la solicitud</label>
+        <input type="number" class="form-control" id="formGroupExampleInput" placeholder="123">
+      </div>
+      <button type="button" class="btn btn-success btn-lg btn-block">Consultar</button>
+    </form>
+  </div>
+</body>
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" id="footer">
+    © 2021 Copyright: Trim-Teck (System)
+  </div>
+</footer>
+</html>
