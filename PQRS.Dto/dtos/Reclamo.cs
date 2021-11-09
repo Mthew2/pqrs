@@ -2,41 +2,36 @@
 {
     using System;
     using System.Text;
-    using enums;
     using helpers;
 
     public class Reclamo: Solicitud
     {
-        private int idReclamo;
-        private ReclamoType idTipoReclamo;
-        private SolucionType idSolicitud;
+        private int intIdReclamo;
+        private int intIdTipoReclamo;
+        private int intIdSolicitud;
         private double costo;
 
-        public Reclamo(AreaType area, int idCliente, ServicioType servicio, SolicitudType tipoSolicitud, int idReclamo, ReclamoType idTipoReclamo, int idSupervisor, SolucionType idSolicitud, double costo) : base(area, idCliente, servicio, tipoSolicitud)
+        public Reclamo()
         {
-            this.idReclamo = idReclamo;
-            this.idTipoReclamo = idTipoReclamo;
-            this.idSolicitud = idSolicitud;
-            this.costo = costo;
         }
         
 
         public int IdReclamo
         {
-            get { return idReclamo; }
-            set { idReclamo = value; }
+            get { return intIdReclamo; }
+            set { intIdReclamo = value; }
         }
 
-        public ReclamoType IdTipoReclamo
+        public int IdTipoReclamo
         {
-            get { return idTipoReclamo; }
-            set { idTipoReclamo = value; }
+            get { return intIdTipoReclamo; }
+            set { intIdTipoReclamo = value; }
         }
 
-        public SolucionType IdSolicitud
+        public int IdSolicitud
         {
-            get { return idSolicitud; }
-            set { idSolicitud = value; }
+            get { return intIdSolicitud; }
+            set { intIdSolicitud = value; }
         }
 
         public double Costo
@@ -52,7 +47,7 @@
 
         public override bool Registrar()
         {
-            this.idReclamo = IdGenerator.ReclamoID;
+            this.intIdReclamo = IdGenerator.ReclamoID;
             this.Validar();
             //Almacena
             return true;
@@ -62,11 +57,11 @@
         {
             base.Validar();
             StringBuilder sbError = new StringBuilder("");
-            if (idTipoReclamo == 0)
+            if (intIdTipoReclamo == 0)
             {
                 sbError.AppendLine("El campo tipo reclamo es obligatorio");
             }
-            if (idSolicitud == 0)
+            if (intIdSolicitud == 0)
             {
                 sbError.AppendLine("El campo solicitud es obligatorio");
             }

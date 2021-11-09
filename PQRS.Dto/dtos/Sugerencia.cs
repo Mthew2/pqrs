@@ -4,35 +4,30 @@
     using helpers;
     using System;
     using System.Text;
-    public class Sugerencia: Solicitud
+    public class Sugerencia : Solicitud
     {
-        private int idSugerencia;
-        private int tipoSugerencia;
-        private string descripcion;
+        private int intIdSugerencia;
+        private int intTipoSugerencia;
+        private string strDescripcion;
 
-        public Sugerencia(AreaType area, int idCliente, ServicioType servicio, SolicitudType tipoSolicitud, int idSugerencia, int tipoSugerencia, string descripcion) : base(area, idCliente, servicio, tipoSolicitud)
-        {
-            this.idSugerencia = idSugerencia;
-            this.tipoSugerencia = tipoSugerencia;
-            this.descripcion = descripcion;
-        }
+        public Sugerencia() { }
 
         public int IdSugerencia
         {
-            get { return idSugerencia; }
-            set { idSugerencia = value; }
+            get { return intIdSugerencia; }
+            set { intIdSugerencia = value; }
         }
 
         public int TipoSugerencia
         {
-            get { return tipoSugerencia; }
-            set { tipoSugerencia = value; }
+            get { return intTipoSugerencia; }
+            set { intTipoSugerencia = value; }
         }
 
         public string Descripcion
         {
-            get { return descripcion; }
-            set { descripcion = value; }
+            get { return strDescripcion; }
+            set { strDescripcion = value; }
         }
 
         public override bool Consultar()
@@ -42,20 +37,21 @@
 
         public override bool Registrar()
         {
-            this.idSugerencia = IdGenerator.SugerenciaID;
+            this.intIdSugerencia = IdGenerator.SugerenciaID;
             this.Validar();
             //Almacena
             return true;
         }
 
-        public override bool Validar() {
+        public override bool Validar()
+        {
             base.Validar();
             StringBuilder sbError = new StringBuilder("");
-            if (tipoSugerencia == 0)
+            if (intTipoSugerencia == 0)
             {
                 sbError.AppendLine("El campo tipo de sugerencia es obligatorio");
             }
-            if (String.IsNullOrEmpty(descripcion))
+            if (String.IsNullOrEmpty(strDescripcion))
             {
                 sbError.AppendLine("El campo descripcion es obligatorio");
             }

@@ -2,60 +2,61 @@
 {
     using System;
     using System.Text;
-    using enums;
 
     public abstract class Solicitud
     {
-        private AreaType area;
-        private int idCliente;
-        private ServicioType servicio;
-        private SolicitudType tipoSolicitud;
-        private DateTime fecha;
-        private string error;
+        private int intArea;
+        private int intIdCliente;
+        private int intServicio;
+        private int intTipoSoli;
+        private string strFecha;
+        private string strError;
 
-        public Solicitud(AreaType area, int idCliente, ServicioType servicio, SolicitudType tipoSolicitud) {
-            this.area = area;
-            this.idCliente = idCliente;
-            this.servicio = servicio;
-            this.tipoSolicitud = tipoSolicitud;
-            this.fecha = DateTime.Now;
-            this.error = string.Empty;
-        }
+        public Solicitud() {
+            //public Solicitud(int area, int intIdCliente, int intServicio, int intTipoSoli)
+            //{
+                //this.intArea = area;
+                //this.intIdCliente = intIdCliente;
+                //this.intServicio = intServicio;
+                //this.intTipoSoli = intTipoSoli;
+                //this.strFecha = DateTime.Now.ToString();
+                //this.strError = string.Empty;
+            }
 
-        public AreaType Area
+        public int Area
         {
-            get { return area; }
-            set { area = value; }
+            get { return intArea; }
+            set { intArea = value; }
         }
 
         public int IdCliente
         {
-            get { return idCliente; }
-            set { idCliente = value; }
+            get { return intIdCliente; }
+            set { intIdCliente = value; }
         }
 
-        public ServicioType Servicio
+        public int Servicio
         {
-            get { return servicio; }
-            set { servicio = value; }
+            get { return intServicio; }
+            set { intServicio = value; }
         }
 
-        public SolicitudType TipoSolicitud
+        public int TipoSoli
         {
-            get { return tipoSolicitud; }
-            set { tipoSolicitud = value; }
+            get { return intTipoSoli; }
+            set { intTipoSoli = value; }
         }
 
-        public DateTime Fecha
+        public string Fecha
         {
-            get { return fecha; }
-            set { fecha = value; }
+            get { return strFecha; }
+            set { strFecha = value; }
         }
 
         public string Error
         {
-            get { return error; }
-            protected set { error = value; }
+            get { return strError; }
+            protected set { strError = value; }
         }
 
         public abstract bool Registrar();
@@ -63,26 +64,26 @@
 
         public virtual bool Validar()
         {
-            this.Error = string.Empty;
-            StringBuilder sbError = new StringBuilder("");
-            if (this.area == 0)
+            this.strError = string.Empty;
+            StringBuilder sbstrError = new StringBuilder("");
+            if (this.intArea == 0)
             {
-                sbError.AppendLine("El campo Area es oblogatirio");
+                sbstrError.AppendLine("El campo Area es oblogatirio");
             }
-            if (this.IdCliente == 0)
+            if (this.intIdCliente == 0)
             {
-                sbError.AppendLine("El campo Cliente es oblogatirio");
+                sbstrError.AppendLine("El campo Cliente es oblogatirio");
             }
-            if (this.servicio == 0)
+            if (this.intServicio == 0)
             {
-                sbError.AppendLine("El campo Servicio es oblogatirio");
+                sbstrError.AppendLine("El campo intServicio es oblogatirio");
             }
-            if (this.tipoSolicitud == 0)
+            if (this.intTipoSoli == 0)
             {
-                sbError.AppendLine("El campo Tipo de Solicitud es oblogatirio");
+                sbstrError.AppendLine("El campo Tipo de Solicitud es oblogatirio");
             }
-            this.error = sbError.ToString();
-            return String.IsNullOrEmpty(this.error);
+            this.strError = sbstrError.ToString();
+            return String.IsNullOrEmpty(this.strError);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace PQRS.Dto.dtos
@@ -9,32 +8,29 @@ namespace PQRS.Dto.dtos
 
     public class Felicitacion: Solicitud
     {
-        private int idFelicitacion;
-        private string descripcion;
+        private int intIdFelicitacion;
+        private string strDescripcion;
 
-        public Felicitacion(AreaType area, int idCliente, ServicioType servicio, SolicitudType tipoSolicitud, string descripcion) : base(area, idCliente, servicio, tipoSolicitud)
-        {
-            this.descripcion = descripcion;
-        }
+        public Felicitacion() { }
 
         public int IdFelicitacion
         {
-            get { return idFelicitacion; }
-            set { idFelicitacion = value; }
+            get { return intIdFelicitacion; }
+            set { intIdFelicitacion = value; }
         }
 
 
         public string Descripcion
         {
-            get { return descripcion; }
-            set { descripcion = value; }
+            get { return strDescripcion; }
+            set { strDescripcion = value; }
         }
 
         public override bool Validar()
         {
             base.Validar();
             StringBuilder sbError = new StringBuilder("");
-            if (String.IsNullOrEmpty(descripcion))
+            if (String.IsNullOrEmpty(strDescripcion))
             {
                 sbError.AppendLine("El Campo descripcion es obligatirio");
             }
@@ -49,7 +45,7 @@ namespace PQRS.Dto.dtos
 
         public override bool Registrar()
         {
-            this.idFelicitacion = IdGenerator.FelicitacionID;
+            this.intIdFelicitacion = IdGenerator.FelicitacionID;
             this.Validar();
             //Almacena
             return true;

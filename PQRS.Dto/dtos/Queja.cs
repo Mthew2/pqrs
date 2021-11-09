@@ -2,46 +2,42 @@
 {
     using System;
     using System.Text;
-    using enums;
     using helpers;
     public class Queja : Solicitud
     {
-        private int idQueja;
-        private int idSupervisor;
-        private RemuneracionType idTipoRemuneracion;
+        private int intIdQueja;
+        private int intIdSupervisor;
+        private int intIdTipoRemuneracion;
 
-        public Queja(AreaType area, int idCliente, ServicioType servicio, SolicitudType tipoSolicitud, int idQueja, int idSupervisor, RemuneracionType idTipoRemuneracion) : base(area, idCliente, servicio, tipoSolicitud)
+        public Queja()
         {
-            this.idQueja = idQueja;
-            this.idSupervisor = idSupervisor;
-            this.idTipoRemuneracion = idTipoRemuneracion;
         }
 
         public int IdQueja
         {
-            get { return idQueja; }
-            set { idQueja = value; }
+            get { return intIdQueja; }
+            set { intIdQueja = value; }
         }
         public int IdSupervisor
         {
-            get { return idSupervisor; }
-            set { idSupervisor = value; }
+            get { return intIdSupervisor; }
+            set { intIdSupervisor = value; }
         }
-        public RemuneracionType IdTipoRemuneracion
+        public int IdTipoRemuneracion
         {
-            get { return idTipoRemuneracion; }
-            set { idTipoRemuneracion = value; }
+            get { return intIdTipoRemuneracion; }
+            set { intIdTipoRemuneracion = value; }
         }
 
         public override bool Validar()
         {
             base.Validar();
             StringBuilder sbError = new StringBuilder("");
-            if (idTipoRemuneracion == 0)
+            if (intIdTipoRemuneracion == 0)
             {
                 sbError.AppendLine("El Campo tipo de remuneraciòn es obligatirio");
             }
-            if (idSupervisor == 0)
+            if (IdSupervisor == 0)
             {
                 sbError.AppendLine("El campo supervisor es obligatorio");
             }

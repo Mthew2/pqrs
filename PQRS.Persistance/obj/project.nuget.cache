@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "3tP+znIjF9F8Gqj1cwazj17gqfzzXHE2C5BdZyvwjTcRyj/QmX64AWHC8b9EHhEla2Yh3sjyTOwjrRVX7ktmMA==",
+  "success": true,
+  "projectFilePath": "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.Persistance\\PQRS.Persistance.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\documentformat.openxml\\2.11.3\\documentformat.openxml.2.11.3.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\spreadsheetlight\\3.5.0\\spreadsheetlight.3.5.0.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
