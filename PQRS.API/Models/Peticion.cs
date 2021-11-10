@@ -2,7 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 
-namespace PQRS.Dto.dtos
+namespace PQRS.API.Models
 {
     using Persistance;
     using helpers;

@@ -6,6 +6,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using SpreadsheetLight;
 using System.IO;
 using System.Data;
+using System.Linq;
 
 namespace PQRS.Persistance
 {
@@ -22,12 +23,14 @@ namespace PQRS.Persistance
     {
         private const string FILE_NAME = "SolicitudesBook.xlsx";
 
-        private bool Exists(string bookLocation) {
-            
+        private bool Exists(string bookLocation)
+        {
+
             return File.Exists(FILE_NAME);
         }
 
-        private DataTable CreateDataTableByType(string sheetType) {
+        private DataTable CreateDataTableByType(string sheetType)
+        {
 
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("Area", typeof(int)));
@@ -37,7 +40,7 @@ namespace PQRS.Persistance
             dt.Columns.Add(new DataColumn("Fecha", typeof(string)));
 
             switch (sheetType)
-            {            
+            {
                 case SheetType.PETICION:
                     dt.Columns.Add(new DataColumn("IdPeticion", typeof(int)));
                     dt.Columns.Add(new DataColumn("IdSupervisor", typeof(int)));
@@ -51,7 +54,7 @@ namespace PQRS.Persistance
                 case SheetType.RECLAMO:
                     dt.Columns.Add(new DataColumn("IdReclamo", typeof(int)));
                     dt.Columns.Add(new DataColumn("IdSolucion", typeof(int)));
-                    dt.Columns.Add(new DataColumn("Costo", typeof(double))); 
+                    dt.Columns.Add(new DataColumn("Costo", typeof(double)));
                     break;
                 case SheetType.SUGERENCIA:
                     dt.Columns.Add(new DataColumn("IdSugerencia", typeof(int)));
@@ -76,10 +79,11 @@ namespace PQRS.Persistance
                 DataTable dt = new DataTable();
                 int row = 0;
 
-                if (!this.Exists(bookLocation)) {
+                if (!this.Exists(bookLocation))
+                {
                     throw new Exception("Porfavor descargue la pplantilla");
                 }
-                using (SLDocument doc = new SLDocument(bookLocation, sheetName))  
+                using (SLDocument doc = new SLDocument(bookLocation, sheetName))
                 {
                     SLWorksheetStatistics info = doc.GetWorksheetStatistics();
                     int iStartColumnIndex = info.StartColumnIndex;
@@ -109,7 +113,50 @@ namespace PQRS.Persistance
 
                 throw;
             }
-
         }
+
+        public bool SaveData(string bookLocation, string sheetName, Dictionary<int, int> key, Dictionary<int, string> values)
+        {
+            try
+            {
+                int row = 0;
+                bool saved = false;
+
+                if (!this.Exists(bookLocation))
+                {
+                    throw new Exception("Porfavor descargue la pplantilla");
+                }
+                using (SLDocument doc = new SLDocument(bookLocation, sheetName))
+                {
+                    SLWorksheetStatistics info = doc.GetWorksheetStatistics();
+                    int iStartColumnIndex = info.StartColumnIndex;
+                    int iEndColumnIndex = info.EndColumnIndex;
+
+                    for (row = info.StartRowIndex + 1; row <= info.EndRowIndex; ++row)
+                    {
+                        int keyIndex = key.Select(x => x.Key).FirstOrDefault();
+                        int keyValue = key.FirstOrDefault(x => x.Key == keyIndex).Value;
+                        if (doc.GetCellValueAsString(row, keyIndex).Trim().ToLower().Equals(keyValue.ToString().ToLower()))
+                        {   
+                            for (int column = 0; column <= iEndColumnIndex; column++)
+                            {
+                                string value = values.FirstOrDefault(x => x.Key == column).Value;
+                                doc.SetCellValue(row, column, value);
+                            }
+                            saved = true;
+                        }
+                    }
+
+                }
+                return saved;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
     }
 }

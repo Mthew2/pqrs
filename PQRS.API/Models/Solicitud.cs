@@ -1,7 +1,6 @@
-﻿namespace PQRS.Dto
+﻿namespace PQRS.API.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.Text;
 
     public abstract class Solicitud
@@ -61,7 +60,7 @@
         }
 
         public abstract bool Registrar();
-        public abstract bool Consultar();        
+        public abstract bool Consultar();
 
         public virtual bool Validar()
         {
