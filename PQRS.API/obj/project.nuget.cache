@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "S8LN5cP3Vc+ZRct16VbBf32JNIYNO5eSbrDPfHi1tmUaOBTA5/ENpQLJZNNWwnPRWMfF2nSJof1DWWegv4SJ3A==",
+  "success": true,
+  "projectFilePath": "D:\\UNIVERSIDAD\\2021-2\\ELECTIVA 1\\pqrs\\PQRS.API\\PQRS.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\documentformat.openxml\\2.11.3\\documentformat.openxml.2.11.3.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\spreadsheetlight\\3.5.0\\spreadsheetlight.3.5.0.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\MatheoPC\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

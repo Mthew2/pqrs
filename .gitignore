@@ -1,0 +1,10 @@
+# production
+/build
+/PQRS.Dto/build
+/PQRS.Dto/bin
+/PQRS.Dto/obj
+/PQRS.UI/build
+/PQRS.UI/bin
+/PQRS.UI/obj
+/.vs
+.vs

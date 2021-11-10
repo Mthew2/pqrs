@@ -1,0 +1,5 @@
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\bin\Debug\netstandard2.0\PQRS.Persistance.deps.json
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\bin\Debug\netstandard2.0\PQRS.Persistance.dll
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.csprojAssemblyReference.cache
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.AssemblyInfoInputs.cache
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.AssemblyInfo.cs
