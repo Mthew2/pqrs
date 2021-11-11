@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Generar Solicitud";
+}
+
+<div id="logreg-forms">
+    <form id="generar">
+        <img src="~/images/init.png" class="rounded mx-auto d-block">
+        <div class="form-group">
+            <label for="TipoSoli">Código de la solicitud</label>
+            <select class="form-control" id="TipoSoli">
+                <option value="-1">Seleccione una opción</option>
+                <option value="1">Petición</option>
+                <option value="2">Queja</option>
+                <option value="3">Reclamo</option>
+                <option value="4">Sugerencia</option>
+                <option value="5">Felicitación</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Area">Código del área a la que va dirigida la queja</label>
+            <input type="number" class="form-control" id="Area">
+        </div>
+        <div class="form-group">
+            <label for="IdCliente">Identificación del Cliente</label>
+            <input type="number" class="form-control" id="IdCliente">
+        </div>
+        <div class="form-group">
+            <label for="Servicio">Código del servicio</label>
+            <select class="form-control" id="Servicio">
+                <option value="1">Telefonía</option>
+                <option value="2">Internet</option>
+                <option value="3">Televisión</option>
+                <option value="4">Agua</option>
+                <option value="5">Luz</option>
+                <option value="6">Alcantarillado</option>
+            </select>
+        </div>
+
+        <div class="solicitudType d-none" id="Peticion">
+            <div class="form-group">
+                <label for="IdSupervisor">Identificación del Supervisor</label>
+                <input type="number" class="form-control" id="IdSupervisor">
+            </div>
+        </div>
+
+        <div class="solicitudType d-none" id="Queja">
+            <div class="form-group">
+                <label for="IdSupervisor">Identificación del Supervisor</label>
+                <input type="number" class="form-control" id="IdSupervisor">
+            </div>
+            <div class="form-group">
+                <label for="IdTipoRemuneracion">Código del servicio</label>
+                <select class="form-control" id="IdTipoRemuneracion">
+                    <option value="1">Monetaria</option>
+                    <option value="2">Aumento de Capacidades</option>
+                    <option value="3">Otras Dadivas</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="solicitudType d-none" id="Reclamo">
+            <div class="form-group">
+                <label for="IdTipoReclamo">Tipo de reclamo</label>
+                <select class="form-control" id="IdTipoReclamo">
+                    <option value="1">Facturación</option>
+                    <option value="2">Configuración</option>
+                    <option value="3">Instalación</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="IdSolucion">Código del servicio</label>
+                <select class="form-control" id="IdSolucion">
+                    <option value="1">Correción</option>
+                    <option value="2">Aclaración</option>
+                    <option value="3">Remuneración</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Costo">Costo</label>
+                <input type="number" class="form-control" id="Costo">
+            </div>
+        </div>
+
+        <div class="solicitudType d-none" id="Sugerencia">
+            <div class="form-group">
+                <label for="IdTipoSugerencia">Tipo de Sugerencia</label>
+                <select class="form-control" id="IdTipoSugerencia">
+                    <option value="1">Aspecto a Mejorar</option>
+                    <option value="2">Pesimo Servicio</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Descripcion">Descripción de la Sugerencia</label>
+                <textarea class="form-control" id="Descripcion" maxlength="50"></textarea>
+            </div>
+        </div>
+
+        <div class="solicitudType d-none" id="Felicitacion">
+            <div class="form-group">
+                <label for="Descripcion">Descripción de la Sugerencia</label>
+                <textarea class="form-control" id="Descripcion" maxlength="50"></textarea>
+            </div>
+        </div>
+
+        <button type="button" id="btnGuardar" class="btn btn-success btn-lg btn-block">Guardar</button>
+    </form>
+</div>
+@section Scripts {
+    <script src="~/js/generar.js" asp-append-version="true"></script>
+}

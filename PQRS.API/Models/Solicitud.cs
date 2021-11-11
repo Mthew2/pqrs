@@ -1,7 +1,12 @@
-﻿namespace PQRS.API.Models
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Data;
+
+namespace PQRS.API.Models
 {
-    using System;
-    using System.Text;
+    using Persistance;
+    using helpers;
 
     public abstract class Solicitud
     {
@@ -12,16 +17,7 @@
         private string strFecha;
         private string strError;
 
-        public Solicitud() {
-            //public Solicitud(int area, int intIdCliente, int intServicio, int intTipoSoli)
-            //{
-                //this.intArea = area;
-                //this.intIdCliente = intIdCliente;
-                //this.intServicio = intServicio;
-                //this.intTipoSoli = intTipoSoli;
-                //this.strFecha = DateTime.Now.ToString();
-                //this.strError = string.Empty;
-            }
+        public Solicitud() {}
 
         public int Area
         {
@@ -62,28 +58,5 @@
         public abstract bool Registrar();
         public abstract bool Consultar();
 
-        public virtual bool Validar()
-        {
-            this.strError = string.Empty;
-            StringBuilder sbstrError = new StringBuilder("");
-            if (this.intArea == 0)
-            {
-                sbstrError.AppendLine("El campo Area es oblogatirio");
-            }
-            if (this.intIdCliente == 0)
-            {
-                sbstrError.AppendLine("El campo Cliente es oblogatirio");
-            }
-            if (this.intServicio == 0)
-            {
-                sbstrError.AppendLine("El campo intServicio es oblogatirio");
-            }
-            if (this.intTipoSoli == 0)
-            {
-                sbstrError.AppendLine("El campo Tipo de Solicitud es oblogatirio");
-            }
-            this.strError = sbstrError.ToString();
-            return String.IsNullOrEmpty(this.strError);
-        }
     }
 }

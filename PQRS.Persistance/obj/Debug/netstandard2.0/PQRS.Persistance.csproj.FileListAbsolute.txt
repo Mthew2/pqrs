@@ -3,3 +3,7 @@ D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\bin\Debug\netstandard2.0\
 D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.csprojAssemblyReference.cache
 D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.AssemblyInfoInputs.cache
 D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.AssemblyInfo.cs
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\bin\Debug\netstandard2.0\PQRS.Persistance.pdb
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.csproj.CoreCompileInputs.cache
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.dll
+D:\UNIVERSIDAD\2021-2\ELECTIVA 1\pqrs\PQRS.Persistance\obj\Debug\netstandard2.0\PQRS.Persistance.pdb

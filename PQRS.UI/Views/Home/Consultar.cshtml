@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form id="consultar">
+        <img src="~/images/init.png" class="rounded mx-auto d-block">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Código de la solicitud</label>
+            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="123">
+        </div>
+        <button type="button" class="btn btn-success btn-lg btn-block">Consultar</button>
+    </form>
+</div>
+@section Scripts {
+    <script src="~/js/consultar.js" asp-append-version="true"></script>
+}

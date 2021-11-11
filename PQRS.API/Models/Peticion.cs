@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Data;
 
 namespace PQRS.API.Models
 {
     using Persistance;
     using helpers;
-    using System.Data;
 
     public class Peticion : Solicitud
     {
@@ -34,7 +34,7 @@ namespace PQRS.API.Models
             try
             {
                 ExcelPersistance persistance = new ExcelPersistance();
-                DataTable dt = persistance.GetData("", "");
+                DataTable dt = persistance.GetData(SolicitudType.PETICION);
 
                 if (dt.Rows.Count == 0)
                 {
@@ -68,7 +68,7 @@ namespace PQRS.API.Models
             try
             {
                 ExcelPersistance persistance = new ExcelPersistance();
-                DataTable dt = persistance.GetData("", "");
+                DataTable dt = persistance.GetData(SolicitudType.PETICION);
 
                 if (dt.Rows.Count == 0)
                 {
@@ -113,18 +113,18 @@ namespace PQRS.API.Models
                 ExcelPersistance persistance = new ExcelPersistance();
 
                 Dictionary<int, int> key = new Dictionary<int, int>();
-                key.Add(5, this.intIdPeticion);
+                key.Add(6, this.intIdPeticion);
 
                 Dictionary<int, string> values = new Dictionary<int, string>();
-                values.Add(0, this.Area.ToString());
-                values.Add(1, this.IdCliente.ToString());
-                values.Add(2, this.Servicio.ToString());
-                values.Add(3, this.TipoSoli.ToString());
-                values.Add(4, this.Fecha);
-                values.Add(4, this.intIdPeticion.ToString());
-                values.Add(6, this.intIdSupervisor.ToString());
+                values.Add(1, this.Area.ToString());
+                values.Add(2, this.IdCliente.ToString());
+                values.Add(3, this.Servicio.ToString());
+                values.Add(4, this.TipoSoli.ToString());
+                values.Add(5, this.Fecha);
+                values.Add(6, this.intIdPeticion.ToString());
+                values.Add(7, this.intIdSupervisor.ToString());
 
-                if (persistance.SaveData("", "", key, values))
+                if (persistance.SaveData(SolicitudType.PETICION, key, values))
                 {
                     return true;
                 }
@@ -136,10 +136,26 @@ namespace PQRS.API.Models
             }
         }
 
-        public override bool Validar()
+        private bool Validar()
         {
-            base.Validar();
+            this.Error = string.Empty;
             StringBuilder sbError = new StringBuilder("");
+            if (this.Area == 0)
+            {
+                sbError.AppendLine("El campo Area es oblogatirio");
+            }
+            if (this.IdCliente == 0)
+            {
+                sbError.AppendLine("El campo Cliente es oblogatirio");
+            }
+            if (this.Servicio == 0)
+            {
+                sbError.AppendLine("El campo intServicio es oblogatirio");
+            }
+            if (this.TipoSoli == 0)
+            {
+                sbError.AppendLine("El campo Tipo de Solicitud es oblogatirio");
+            }
             if (intIdSupervisor == 0)
             {
                 sbError.AppendLine("El campo supervisor es obligatorio");

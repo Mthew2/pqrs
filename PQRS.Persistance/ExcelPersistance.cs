@@ -21,12 +21,14 @@ namespace PQRS.Persistance
     }
     public class ExcelPersistance
     {
-        private const string FILE_NAME = "SolicitudesBook.xlsx";
+        private string FILE_NAME = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SolicitudesBook.xlsx");
 
-        private bool Exists(string bookLocation)
+        private void ValidateFile()
         {
 
-            return File.Exists(FILE_NAME);
+            if (!File.Exists(FILE_NAME)) {
+                this.CreateFile();
+            }
         }
 
         private DataTable CreateDataTableByType(string sheetType)
@@ -72,41 +74,62 @@ namespace PQRS.Persistance
             return dt;
         }
 
-        public DataTable GetData(string bookLocation, string sheetName)
-        {
+        private void CreateFile() {
             try
             {
-                DataTable dt = new DataTable();
-                int row = 0;
-
-                if (!this.Exists(bookLocation))
+                using (SLDocument doc = new SLDocument())
                 {
-                    throw new Exception("Porfavor descargue la pplantilla");
+                    doc.AddWorksheet(SheetType.PETICION);
+                    doc.SetCellValue(1, 1, "Area");
+                    doc.SetCellValue(1, 2, "IdCliente");
+                    doc.SetCellValue(1, 3, "Servicio");
+                    doc.SetCellValue(1, 4, "TipoSoli");
+                    doc.SetCellValue(1, 5, "Fecha");
+                    doc.SetCellValue(1, 6, "IdPeticion");
+                    doc.SetCellValue(1, 7, "IdSupervisor");
+
+                    doc.AddWorksheet(SheetType.QUEJA);
+                    doc.SetCellValue(1, 1, "Area");
+                    doc.SetCellValue(1, 2, "IdCliente");
+                    doc.SetCellValue(1, 3, "Servicio");
+                    doc.SetCellValue(1, 4, "TipoSoli");
+                    doc.SetCellValue(1, 5, "Fecha");
+                    doc.SetCellValue(1, 6, "IdQueja");
+                    doc.SetCellValue(1, 7, "IdSupervisor");
+                    doc.SetCellValue(1, 8, "IdTipoResumenaracion");
+
+                    doc.AddWorksheet(SheetType.RECLAMO);
+                    doc.SetCellValue(1, 1, "Area");
+                    doc.SetCellValue(1, 2, "IdCliente");
+                    doc.SetCellValue(1, 3, "Servicio");
+                    doc.SetCellValue(1, 4, "TipoSoli");
+                    doc.SetCellValue(1, 5, "Fecha");
+                    doc.SetCellValue(1, 6, "IdReclamo");
+                    doc.SetCellValue(1, 7, "IdSolucion");
+                    doc.SetCellValue(1, 8, "Costo");
+
+                    doc.AddWorksheet(SheetType.SUGERENCIA);
+                    doc.SetCellValue(1, 1, "Area");
+                    doc.SetCellValue(1, 2, "IdCliente");
+                    doc.SetCellValue(1, 3, "Servicio");
+                    doc.SetCellValue(1, 4, "TipoSoli");
+                    doc.SetCellValue(1, 5, "Fecha");
+                    doc.SetCellValue(1, 6, "IdSugerencia");
+                    doc.SetCellValue(1, 7, "IdsuperviSln");
+                    doc.SetCellValue(1, 8, "IdTipoSugerencia");
+                    doc.SetCellValue(1, 9, "Descripcion");
+
+                    doc.AddWorksheet(SheetType.FELICITACION);
+                    doc.SetCellValue(1, 1, "Area");
+                    doc.SetCellValue(1, 2, "IdCliente");
+                    doc.SetCellValue(1, 3, "Servicio");
+                    doc.SetCellValue(1, 4, "TipoSoli");
+                    doc.SetCellValue(1, 5, "Fecha");
+                    doc.SetCellValue(1, 6, "IdFelicitacion");
+                    doc.SetCellValue(1, 7, "Descripcion");
+
+                    doc.SaveAs(FILE_NAME);
                 }
-                using (SLDocument doc = new SLDocument(bookLocation, sheetName))
-                {
-                    SLWorksheetStatistics info = doc.GetWorksheetStatistics();
-                    int iStartColumnIndex = info.StartColumnIndex;
-                    int iEndColumnIndex = info.EndColumnIndex;
-
-                    for (int columnIndex = 0; columnIndex <= info.EndColumnIndex; columnIndex++)
-                    {
-                        string name = doc.GetCellValueAsString(0, columnIndex);
-                        dt.Columns.Add(new DataColumn(name));
-                    }
-
-                    for (row = info.StartRowIndex + 1; row <= info.EndRowIndex; ++row)
-                    {
-                        DataRow tr = dt.NewRow();
-                        for (int column = 0; column <= iEndColumnIndex; column++)
-                        {
-                            tr[column] = doc.GetCellValueAsString(row, column);
-                        }
-                        dt.Rows.Add(tr);
-                    }
-
-                }
-                return dt;
             }
             catch (Exception)
             {
@@ -115,18 +138,55 @@ namespace PQRS.Persistance
             }
         }
 
-        public bool SaveData(string bookLocation, string sheetName, Dictionary<int, int> key, Dictionary<int, string> values)
+        public DataTable GetData(string sheetName)
         {
             try
             {
-                int row = 0;
+                this.ValidateFile();
+
+                DataTable dt = new DataTable();
+                int row = 1;
+
+                using (SLDocument doc = new SLDocument(FILE_NAME, sheetName))
+                {
+                    SLWorksheetStatistics info = doc.GetWorksheetStatistics();
+                    int iStartColumnIndex = info.StartColumnIndex;
+                    int iEndColumnIndex = info.EndColumnIndex;
+
+                    for (int columnIndex = 1; columnIndex <= info.EndColumnIndex; columnIndex++)
+                    {
+                        string name = doc.GetCellValueAsString(1, columnIndex);
+                        dt.Columns.Add(new DataColumn(name));
+                    }
+
+                    for (row = info.StartRowIndex + 1; row <= info.EndRowIndex; ++row)
+                    {
+                        DataRow tr = dt.NewRow();
+                        for (int column = 1; column <= iEndColumnIndex; column++)
+                        {
+                            tr[column - 1] = doc.GetCellValueAsString(row, column);
+                        }
+                        dt.Rows.Add(tr);
+                    }
+                }
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool SaveData(string sheetName, Dictionary<int, int> key, Dictionary<int, string> values)
+        {
+            try
+            {
+                this.ValidateFile();
+
+                int row = 1;
                 bool saved = false;
 
-                if (!this.Exists(bookLocation))
-                {
-                    throw new Exception("Porfavor descargue la pplantilla");
-                }
-                using (SLDocument doc = new SLDocument(bookLocation, sheetName))
+                using (SLDocument doc = new SLDocument(FILE_NAME, sheetName))
                 {
                     SLWorksheetStatistics info = doc.GetWorksheetStatistics();
                     int iStartColumnIndex = info.StartColumnIndex;
@@ -138,13 +198,21 @@ namespace PQRS.Persistance
                         int keyValue = key.FirstOrDefault(x => x.Key == keyIndex).Value;
                         if (doc.GetCellValueAsString(row, keyIndex).Trim().ToLower().Equals(keyValue.ToString().ToLower()))
                         {   
-                            for (int column = 0; column <= iEndColumnIndex; column++)
+                            for (int column = 1; column <= iEndColumnIndex; column++)
                             {
-                                string value = values.FirstOrDefault(x => x.Key == column).Value;
+                                string value = values.FirstOrDefault(x => x.Key == column - 1).Value;
                                 doc.SetCellValue(row, column, value);
                             }
                             saved = true;
                         }
+                    }
+                    if (!saved) {
+                        for (int column = 1; column <= iEndColumnIndex; column++)
+                        {
+                            string value = values.FirstOrDefault(x => x.Key == column - 1).Value;
+                            doc.SetCellValue(row, column, value);
+                        }
+                        saved = true;
                     }
 
                 }
