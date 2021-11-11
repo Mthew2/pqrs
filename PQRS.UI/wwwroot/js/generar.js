@@ -39,10 +39,10 @@
     },
     prepareData() {
         let data = {
-            Area: document.getElementById('Area').value,
-            IdCliente: document.getElementById('IdCliente').value,
-            Servicio: document.getElementById('Servicio').value,
-            TipoSoli: document.getElementById('TipoSoli').value,
+            Area: parseInt(document.getElementById('Area').value),
+            IdCliente: parseInt(document.getElementById('IdCliente').value),
+            Servicio: parseInt(document.getElementById('Servicio').value),
+            TipoSoli: parseInt(document.getElementById('TipoSoli').value),
             Fecha: moment().format('MMMM Do YYYY, h:mm:ss a'),
         }
         const type = Solicitud.type;
@@ -51,7 +51,7 @@
                 data = {
                     ...data,
                     IdPeticion: 0,
-                    IdSupervisor: document.getElementById(`#${type} #IdSupervisor`)
+                    IdSupervisor: parseInt(document.getElementById(`#${type} #IdSupervisor`).value)
                 }
                 break;
             case 'Queja':
@@ -59,24 +59,24 @@
                     ...data,
                     IdQueja: 0,
                     IdSupervisor: document.querySelector(`#${type} #IdSupervisor`).value,
-                    IdTipoRemuneracion: document.getElementById(`#${type} #IdTipoRemuneracion`).value
+                    IdTipoRemuneracion: parseInt(document.getElementById(`#${type} #IdTipoRemuneracion`).value)
                 }
                 break;
             case 'Reclamo':
                 data = {
                     ...data,
                     IdReclamo: 0,
-                    IdTipoReclamo: document.querySelector(`#${type} #IdTipoReclamo`).value,
-                    IdSolucion: document.querySelector(`#${type} #IdSolucion`).value,
-                    Costo: document.querySelector(`#${type} #Costo`).value
+                    IdTipoReclamo: parseInt(document.querySelector(`#${type} #IdTipoReclamo`).value),
+                    IdSolucion: parseInt(document.querySelector(`#${type} #IdSolucion`).value),
+                    Costo: parseFloat(document.querySelector(`#${type} #Costo`).value)
                 }
                 break;
             case 'Sugerencia':
                 data = {
                     ...data,
                     IdSugerencia: 0,
-                    IdTipoSugerencia: document.querySelector(`#${type} #IdTipoSugerencia`).value,
-                    Descripcion: document.querySelector(`#${type} #Descripcion`).value,
+                    IdTipoSugerencia: parseInt(document.querySelector(`#${type} #IdTipoSugerencia`).value),
+                    Descripcion: parseInt(document.querySelector(`#${type} #Descripcion`).value),
                 }
                 break;
             case 'Felicitacion':
@@ -88,7 +88,7 @@
                 }
                 break;
         }
-        return data;
+        return JSON.stringify(data);
     }
 };
 (Solicitud.init)();
